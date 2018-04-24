@@ -28,6 +28,8 @@
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level.1710003828" name="Debug Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.2011037088" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/file_encode_decode/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/encode_decode_algorithms/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/basic_types}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.68881015" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
 							</tool>
@@ -39,10 +41,12 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.961335985" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.1843862547" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug">
 								<option id="gnu.cpp.link.option.libs.828877305" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="encode_decode_algorithms"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="file_encode_decode"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.677854757" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/file_encode_decode/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/encode_decode_algorithms/Debug}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1003622975" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -139,4 +143,5 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

@@ -6,35 +6,30 @@
 //
 //  Description: Entry point into text to morse conversion program
 //////////////////////////////////////////////////////////////////
-
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
 #include "file_encode_decode.h"
+#include "text_to_morse_algorithm.h"
 
 int main(int argc,char *argv[])
 {
+	static const int EXPECTED_ARGS = 3;
 
-
-	// Create instance of TextToMorseAlgorithm class
-
-	// Create instance of FileEncodeDecode class, the algorithm
-	// to use for the Text to Morse conversion is passed in as an argument
-	// along with the path to the file which is being converted
-	std::cout << argv[0] << std::endl;
-	std::cout << argv[1] << std::endl;
-
-	std::ifstream infile(argv[1]);
-
-	std::string line;
-	while (std::getline(infile, line))
+	if (argc >= EXPECTED_ARGS)
 	{
-		std::cout << line << std::endl;
+		// Create instance of TextToMorseAlgorithm class
+		EncodeDecodeAlgorithms::TextToMorseAlgorithm theTextToMorseAlgorithm;
 
+		// Create instance of FileEncodeDecode class, the algorithm
+		// to use for the Text to Morse conversion is passed in as an argument
+		// along with the path to the file which is being converted
+		FileEncodeDecode theFileEncodeDecode(theTextToMorseAlgorithm,argv[1],argv[2]);
+
+		theFileEncodeDecode.process();
 	}
-
-	FileEncodeDecode theFileEncodeDecode;
+	else
+	{
+		std::cout << "Error:  Insufficient Arguments";
+	}
 
 	return 0;
 

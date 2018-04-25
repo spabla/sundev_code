@@ -20,10 +20,17 @@ namespace EncodeDecodeAlgorithms
 	class TextToMorseAlgorithm : public EncodeDecodeAlgorithmInterface
 	{
 	public:
+
+		// Constructor
 		TextToMorseAlgorithm()
 		{
-
+			// Nothing to construct
 		}
+
+		// Overridden function which must be implemented by
+		// this class in order to provide the algorithm for converting
+		// text to morse
+		bool encodeDecodeLine(std::string& theLine);
 
 	};
 }

@@ -59,11 +59,17 @@ void FileEncodeDecode::process()
 
 	if((m_input_file_stream) && (m_output_file_stream))
 	{
+		// Holds a line from the file
 		std::string line;
 
+		// Loop through the entire file handling a line at a time
+		// Note: The entire file is not being read into a buffer, in
+		// case a large file causes memory issues with a limited stack
 		while (std::getline(m_input_file_stream, line))
 		{
-			std::cout << line << std::endl;
+			// Pass the line to the encode / decode algorithm
+			m_encode_decode_algorithm.encodeDecodeLine(line);
+			// Write the modified line to file
 			m_output_file_stream << line << std::endl;
 		}
 	}

@@ -10,6 +10,10 @@
 #ifndef ENCODE_DECODE_ALGORITHM_INTERFACE_H_
 #define ENCODE_DECODE_ALGORITHM_INTERFACE_H_
 
+#include <iostream>
+#include <sstream>
+#include <string.h>
+
 namespace EncodeDecodeAlgorithms
 {
 	// This is an abstract class which defines an
@@ -20,9 +24,13 @@ namespace EncodeDecodeAlgorithms
 	public:
 		EncodeDecodeAlgorithmInterface()
 		{
-
+			// Nothing to construct
 		}
 
+		// Pure virtual function which all classes implementing
+		// the interface must override.  Each concrete class will
+		// provide its own algorithm for handling the line.
+		virtual bool encodeDecodeLine(std::string& theLine) = 0;
 
 	};
 }

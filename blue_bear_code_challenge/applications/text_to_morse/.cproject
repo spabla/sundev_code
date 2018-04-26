@@ -30,6 +30,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/file_encode_decode/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/encode_decode_algorithms/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/basic_types}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/utilities/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_types}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.68881015" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
 							</tool>
@@ -41,12 +43,14 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.961335985" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.1843862547" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug">
 								<option id="gnu.cpp.link.option.libs.828877305" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="encode_decode_algorithms"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="file_encode_decode"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="encode_decode_algorithms"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="utilities"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.677854757" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/file_encode_decode/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/encode_decode_algorithms/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/utilities/Debug}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1003622975" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

@@ -14,6 +14,7 @@
 #include <iostream>
 #include <sstream>
 #include <string.h>
+#include "basic_types.h"
 
 namespace Utilities
 {
@@ -27,16 +28,15 @@ namespace Utilities
 
 		// A function which returns the morse string for the character
 		// passed in
-		static std::string getMorseString(char theCharacter);
+		std::string getMorseString(char theCharacter);
 
 	private:
 
-		static std::string m_morse_row_one[2];
-		static std::string m_morse_row_two[4];
-		static std::string m_morse_row_three[8];
-		static std::string m_morse_row_four[16];
+		std::string m_morse_row_one[2];
+		std::string m_morse_row_two[4];
+		std::string m_morse_row_three[8];
+		std::string m_morse_row_four[16];
 
-		static std::string getMorseString(int row, int col);
 	};
 }
 

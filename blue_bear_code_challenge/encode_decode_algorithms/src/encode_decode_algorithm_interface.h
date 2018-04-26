@@ -16,6 +16,11 @@
 
 namespace EncodeDecodeAlgorithms
 {
+
+	static const std::string SPACING_BETWEEN_MORSE_WORDS = "       ";
+	static const std::string SPACING_BETWEEN_MORSE_CHARACTERS = "   ";
+	static const std::string SINGLE_SPACE = " ";
+
 	// This is an abstract class which defines an
 	// interface which all EncodeDecodeAlgorithm classes
 	// inheriting from this class must implement
@@ -25,6 +30,11 @@ namespace EncodeDecodeAlgorithms
 		EncodeDecodeAlgorithmInterface()
 		{
 			// Nothing to construct
+		}
+
+		virtual ~EncodeDecodeAlgorithmInterface()
+		{
+			// Nothing to destroy
 		}
 
 		// Pure virtual function which all classes implementing

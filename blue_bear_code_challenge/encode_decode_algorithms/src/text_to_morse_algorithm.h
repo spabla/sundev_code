@@ -12,6 +12,7 @@
 
 #include "encode_decode_algorithm_interface.h"
 #include <string>
+#include "morse_char_encode_decode.h"
 
 namespace EncodeDecodeAlgorithms
 {
@@ -31,6 +32,9 @@ namespace EncodeDecodeAlgorithms
 		// this class in order to provide the algorithm for converting
 		// text to morse
 		bool encodeDecodeLine(std::string& theLine);
+	private:
+		// Utility class used for encoding characters to morse string
+		Utilities::MorseCharEncodeDecode m_char_to_morse_encoder;
 
 	};
 }

@@ -10,11 +10,15 @@
 #ifndef MORSE_TO_TEXT_ALGORITHM_H_
 #define MORSE_TO_TEXT_ALGORITHM_H_
 
+#include "encode_decode_algorithm_interface.h"
+#include <string>
+#include "morse_char_encode_decode.h"
+
 namespace EncodeDecodeAlgorithms
 {
 	// This class is responsible for reading in a morse code file and doing
 	// the conversion necessary to write out a text file
-	class TextToMorseAlgorithm : public EncodeDecodeAlgorithmInterface
+	class MorseToTextAlgorithm : public EncodeDecodeAlgorithmInterface
 	{
 	public:
 

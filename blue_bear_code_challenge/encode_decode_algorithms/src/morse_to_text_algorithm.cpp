@@ -54,9 +54,20 @@ namespace EncodeDecodeAlgorithms
 				if ((countOfConsecutiveSpaces > MAX_SPACE_IN_MORSE_CHAR) &&
 						(countOfConsecutiveSpaces > MIN_SPACES_FOR_FINGER_SPACE))
 				{
+					// You can't have more than 8 bits in a byte
+					static const Uint8_t MAX_SIGNIFICANT_BITS_IN_BYTE = 8U;
+
 					// We have a complete morse character encoded in the byte, lets decode it
-					theTextLine += m_morse_to_char_encoder.getTextChar(theMorseCharByte,
-							                                           numberOfSignificantBitsInByte);
+
+					if (numberOfSignificantBitsInByte <= MAX_SIGNIFICANT_BITS_IN_BYTE)
+					{
+						theTextLine += m_morse_to_char_decoder.getTextChar(theMorseCharByte,
+																		   numberOfSignificantBitsInByte);
+					}
+					else
+					{
+						std::cout << "ERROR - Too many dots and dashes in Morse character" << std::endl;
+					}
 					// zero theMorseCharByte and the number of significant bits it contains
 					theMorseCharByte = 0U;
 					numberOfSignificantBitsInByte = 0U;
@@ -71,13 +82,13 @@ namespace EncodeDecodeAlgorithms
 
 				if (*it == DOT)
 				{
-					theMorseCharByte << 1;
+					theMorseCharByte = theMorseCharByte << 1;
 					theMorseCharByte = theMorseCharByte +1;
 					numberOfSignificantBitsInByte++;
 				}
 				else if (*it == DASH)
 				{
-					theMorseCharByte << 1;
+					theMorseCharByte = theMorseCharByte << 1;
 					numberOfSignificantBitsInByte++;
 				}
 				else

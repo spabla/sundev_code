@@ -30,6 +30,12 @@ namespace Utilities
 		// passed in
 		std::string getMorseString(char theCharacter);
 
+		// Analyses the significant bits in a byte to determine the text character
+		// represented by the morse byte.  A 1 in the byte represents a dot in
+		// the character and a 0 represents a dash
+		std::string getTextChar(Uint8_t theMorseCharByte,
+					            Uint8_t numberOfSignificantBitsInByte);
+
 	private:
 
 		std::string m_morse_row_one[2];
@@ -39,9 +45,5 @@ namespace Utilities
 
 	};
 }
-
-
-
-
 
 #endif /* MORSE_CHAR_ENCODE_DECODE_H_ */

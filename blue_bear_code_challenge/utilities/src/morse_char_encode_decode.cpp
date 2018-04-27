@@ -146,6 +146,65 @@ namespace Utilities
 
 	//============================================================================================
 
+	std::string MorseCharEncodeDecode::getTextChar(Uint8_t theMorseCharByte,
+						    					   Uint8_t numberOfSignificantBitsInByte)
+	{
+		// The return value
+		std::string theReturnTextVal;
+
+		// First remove the insignificant bits by shifting
+
+		// You can't have more than 8 bits in a byte
+		static const Uint8_t MAX_SIGNIFICANT_BITS_IN_BYTE = 8U;
+
+		theMorseCharByte = theMorseCharByte << (MAX_SIGNIFICANT_BITS_IN_BYTE - numberOfSignificantBitsInByte);
+
+		if (numberOfSignificantBitsInByte <= TOTAL_ROW)
+		{
+			// Min array position of character
+			Uint8_t minPossArrayPos = 0;
+			// Max array position of character
+			Uint8_t maxPossArrayPos = pow(2,numberOfSignificantBitsInByte)-1;
+
+			// Now loop through the significant bits of the byte
+			for (Uint8_t i = 0; i < numberOfSignificantBitsInByte; i++)
+			{
+				// Mask for checking if most significant bit is set
+				static const Uint8_t MASK_FOR_CHECKING_MS_BIT = 0x80;
+				if ((theMorseCharByte & MASK_FOR_CHECKING_MS_BIT) == MASK_FOR_CHECKING_MS_BIT)
+				{
+					// Bit set must be a dot
+					maxPossArrayPos = maxPossArrayPos/2;
+				}
+				else
+				{
+					// must be a dash
+					minPossArrayPos = pow(2,numberOfSignificantBitsInByte)/2;
+				}
+			}
+
+			// The min and max position should now be equal, we can
+			// therefore use either to do the lookup.  Will alternate between
+			// both to get rid of warning about unused variable
+			switch (numberOfSignificantBitsInByte)
+			{
+			case 1:
+				theReturnTextVal = charRowOne[maxPossArrayPos];
+				break;
+			case 2:
+				theReturnTextVal = charRowTwo[minPossArrayPos];
+				break;
+			case 3:
+				theReturnTextVal = charRowThree[maxPossArrayPos];
+				break;
+			case 4:
+				theReturnTextVal = charRowFour[minPossArrayPos];
+				break;
+			}
+		}
+
+		return theReturnTextVal;
+	}
 }
 
 

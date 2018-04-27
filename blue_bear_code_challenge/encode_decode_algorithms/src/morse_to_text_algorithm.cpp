@@ -27,6 +27,8 @@ namespace EncodeDecodeAlgorithms
 			// 2, 3 or 4 consecutive spaces will be considered a space between characters
 			// > 4 characters will be considered a space between words
 			Uint8_t countOfConsecutiveSpaces = 0;
+			static const Uint8_t MIN_SPACES_FOR_FINGER_SPACE = 5U;
+			static const Uint8_t MAX_SPACE_IN_MORSE_CHAR = 1U;
 
 			if (*it == SINGLE_SPACE_CHAR)
 			{
@@ -34,17 +36,56 @@ namespace EncodeDecodeAlgorithms
 				countOfConsecutiveSpaces++;
 				// As soon as the space count goes over 4
 				// output a finger space
-				if (countOfConsecutiveSpaces == 5)
+				if (countOfConsecutiveSpaces == MIN_SPACES_FOR_FINGER_SPACE)
 				{
 					theTextLine += SINGLE_SPACE;
 				}
 			}
 			else
 			{
-				// Not a space, so zero the consecutive spaces count
-				countOfConsecutiveSpaces = 0;
+				// We will encode a byte with information about the morse character
+				// a 1 in the byte will signify a dot and a 0 will signify a dash
+				Uint8_t theMorseCharByte = 0U;
+				Uint8_t numberOfSignificantBitsInByte = 0U;
+
+				// If the count of spaces is greater than 1 and less than 5 then
+				// assume the "theMorseCharByte" contains info on a complete morse
+				// character.
+				if ((countOfConsecutiveSpaces > MAX_SPACE_IN_MORSE_CHAR) &&
+						(countOfConsecutiveSpaces > MIN_SPACES_FOR_FINGER_SPACE))
+				{
+					// We have a complete morse character encoded in the byte, lets decode it
+					theTextLine += m_morse_to_char_encoder.getTextChar(theMorseCharByte,
+							                                           numberOfSignificantBitsInByte);
+					// zero theMorseCharByte and the number of significant bits it contains
+					theMorseCharByte = 0U;
+					numberOfSignificantBitsInByte = 0U;
+				}
+
+				// Zero the count of spaces
+				countOfConsecutiveSpaces = 0U;
+
+				// Encode the byte with information about the byte
+				static const char DOT = '.';
+				static const char DASH = '-';
+
+				if (*it == DOT)
+				{
+					theMorseCharByte << 1;
+					theMorseCharByte = theMorseCharByte +1;
+					numberOfSignificantBitsInByte++;
+				}
+				else if (*it == DASH)
+				{
+					theMorseCharByte << 1;
+					numberOfSignificantBitsInByte++;
+				}
+				else
+				{
+					std::cout << "Error - Unrecognised character in morse file, its not a dot, dash or space" <<std::endl;
+					// We will ignore the character and carry on as if it was not there
+				}
 			}
-			theTextLine += m_morse_to_char_encoder.getTextChar(theMorseCharByte);
 		}
 
 		// Now overwrite the original line with the Morse Line

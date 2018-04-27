@@ -19,7 +19,7 @@ namespace EncodeDecodeAlgorithms
 		// Loop through each character in the string
 		for (std::string::iterator it = theLine.begin(),end = theLine.end(); it != end; ++it)
 		{
-			static const char SINGLE_SPACE_CHAR = ' ';
+
 			if (*it == SINGLE_SPACE_CHAR)
 			{
 				// We will assume this space is a space between words

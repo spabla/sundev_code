@@ -26,6 +26,12 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.12935430" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug">
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level.711777700" name="Optimization Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level.1159964704" name="Debug Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1592707655" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/common_types}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/encode_decode_algorithms/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/file_encode_decode/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/utilities/src}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1149023022" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug.1840811343" name="Cygwin C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug">
@@ -35,6 +41,16 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.1998577606" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.675631426" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug">
+								<option id="gnu.cpp.link.option.paths.161109773" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/encode_decode_algorithms/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/utilities/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/file_encode_decode/Debug}&quot;"/>
+								</option>
+								<option id="gnu.cpp.link.option.libs.1342849608" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="encode_decode_algorithms"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="utilities"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="file_encode_decode"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.71801702" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>

@@ -20,6 +20,7 @@ namespace EncodeDecodeAlgorithms
 	static const std::string SPACING_BETWEEN_MORSE_WORDS = "       ";
 	static const std::string SPACING_BETWEEN_MORSE_CHARACTERS = "   ";
 	static const std::string SINGLE_SPACE = " ";
+	static const char SINGLE_SPACE_CHAR = ' ';
 
 	// This is an abstract class which defines an
 	// interface which all EncodeDecodeAlgorithm classes

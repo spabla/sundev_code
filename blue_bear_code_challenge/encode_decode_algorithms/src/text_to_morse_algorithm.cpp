@@ -27,7 +27,7 @@ namespace EncodeDecodeAlgorithms
 				// output three spaces at the end of the character thus
 				// giving the total of seven spaces required between morse words
 				static const std::string FOUR_SPACES = "    ";
-				theMorseLine += SPACING_BETWEEN_MORSE_WORDS;
+				theMorseLine += FOUR_SPACES;
 			}
 			else
 			{

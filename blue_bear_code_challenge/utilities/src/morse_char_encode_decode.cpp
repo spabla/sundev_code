@@ -166,26 +166,33 @@ namespace Utilities
 			// Max array position of character
 			Uint8_t maxPossArrayPos = pow(2,numberOfSignificantBitsInByte)-1;
 
+
 			// Now loop through the significant bits of the byte
 			for (Uint8_t i = 0; i < numberOfSignificantBitsInByte; i++)
 			{
 				// Mask for checking if most significant bit is set
 				static const Uint8_t MASK_FOR_CHECKING_MS_BIT = 0x80;
+				Uint8_t numberOfPossValues = ((maxPossArrayPos+1)- minPossArrayPos);
+				// Depending on whether we have a dot or dash we can throw away half these possible values
 				if ((theMorseCharByte & MASK_FOR_CHECKING_MS_BIT) == MASK_FOR_CHECKING_MS_BIT)
 				{
 					// Bit set must be a dot
-					maxPossArrayPos = maxPossArrayPos/2;
+					// Reduce the number of possible values by reducing max possible value
+					maxPossArrayPos = maxPossArrayPos - numberOfPossValues/2;
 				}
 				else
 				{
 					// must be a dash
-					minPossArrayPos = pow(2,numberOfSignificantBitsInByte)/2;
+					// Reduce the number of possible values by increasing min possible value
+					minPossArrayPos = minPossArrayPos + numberOfPossValues/2;
 				}
+
+				// Shift the bit we have just checked out
+				theMorseCharByte = theMorseCharByte << 1;
 			}
 
-			// The min and max position should now be equal, we can
-			// therefore use either to do the lookup.  Will alternate between
-			// both to get rid of warning about unused variable
+
+			// At the end min and max end up the same, so it
 			switch (numberOfSignificantBitsInByte)
 			{
 			case 1:

@@ -140,7 +140,7 @@ namespace Utilities
 				". - - . - ."// @ symbol
 		};
 
-		for (Uint8_t i = 0; i < NUMBER_OF_NUMERIC_DIGITS; i++)
+		for (Uint8_t i = 0; i < NUMBER_OF_SUPPORTED_SYMBOLS; i++)
 		{
 			m_number_and_symbol_map_to_morse[arrayOfCommonSymbols[i]] = arrayOfMorseStringsForCommonSymbols[i];
 			m_number_and_symbol_map_from_morse[arrayOfMorseStringsForCommonSymbols[i]] = arrayOfCommonSymbols[i];
@@ -248,8 +248,8 @@ namespace Utilities
 
 		theMorseCharByte = theMorseCharByte << (MAX_SIGNIFICANT_BITS_IN_BYTE - numberOfSignificantBitsInByte);
 
-		if (numberOfSignificantBitsInByte <= TOTAL_ROW)
-		{
+		// Check for letters
+
 			// Min array position of character
 			Uint8_t minPossArrayPos = 0;
 			// Max array position of character
@@ -308,19 +308,17 @@ namespace Utilities
 			case 4:
 				theReturnTextVal = charRowFour[minPossArrayPos];
 				break;
-			}
-		}
-		else
-		{
-			// Create iterator for looking up in map
-			std::map<std::string,char>::iterator it;
-			it = m_number_and_symbol_map_from_morse.find(theMorseString);
-			if (it != m_number_and_symbol_map_from_morse.end())
-			{
-				theReturnTextVal = m_number_and_symbol_map_from_morse.find(theMorseString)->second;
-			}
+			default:
+				// Create iterator for looking up in map
+				std::map<std::string,char>::iterator it;
+				it = m_number_and_symbol_map_from_morse.find(theMorseString);
 
-		}
+				if (it != m_number_and_symbol_map_from_morse.end())
+				{
+					theReturnTextVal = m_number_and_symbol_map_from_morse.find(theMorseString)->second;
+				}
+				break;
+			}
 
 		return theReturnTextVal;
 	}

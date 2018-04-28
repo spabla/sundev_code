@@ -82,7 +82,7 @@ namespace Utilities
 				"- - - - -",
 				". - - - -",
 				". . - - -",
-				"- - - . .",
+				". . . - -",
 				". . . . -",
 				". . . . .",
 				"- . . . .",
@@ -101,10 +101,46 @@ namespace Utilities
 			m_number_and_symbol_map_from_morse[morseNumberArray[i]] = arrayOfNumericDigits[i];
 		}
 
-		// Lets add some common symbols to the maps as well
+		// Lets add some common symbols (eg. punctuation marks, @ symbol - want to be
+		// able to handle email addresses) to the maps as well
+		static const Uint8_t NUMBER_OF_SUPPORTED_SYMBOLS = 15;
+		char arrayOfCommonSymbols[NUMBER_OF_SUPPORTED_SYMBOLS] =
+		{
+				'.', // fullstop
+				',', // comma
+				'?', // question mark
+				'!', // exclamation mark
+				'(', // open bracket
+				')', // close bracker
+				'&', // amphersand
+				':', // colon
+				';', // semi colon
+				'=', // equals
+				'+', // plus
+				'-', // minus
+				'"', // quotation mark
+				'$', // dollar sign
+				'@'// @ symbol
+		};
 
-
-
+		std::string arrayOfMorseStringsForCommonSymbols[NUMBER_OF_SUPPORTED_SYMBOLS] =
+		{
+				". - . - . -", // fullstop
+				"- - . . - -", // comma
+				". . - - . .", // question mark
+				"- . - . - -", // exclamation mark
+				"- . - - .", // open bracket
+				"- . - - . -", // close bracker
+				". - . . .", // amphersand
+				"- - - . . .", // colon
+				"- . - . - .", // semi colon
+				"- . . . -", // equals
+				". - . - .", // plus
+				"- . . . . -", // minus
+				". - . . - .", // quotation mark
+				". . . -  . . -", // dollar sign
+				". - - . - ."// @ symbol
+		};
 	}
 
 	//=============================================================================

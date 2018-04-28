@@ -15,6 +15,7 @@
 #include <sstream>
 #include <string.h>
 #include "basic_types.h"
+#include <map>
 
 namespace Utilities
 {
@@ -38,10 +39,14 @@ namespace Utilities
 
 	private:
 
+		// Arrays for storing morse strings for letters
 		std::string m_morse_row_one[2];
 		std::string m_morse_row_two[4];
 		std::string m_morse_row_three[8];
 		std::string m_morse_row_four[16];
+
+		std::map<char,std::string> m_number_and_symbol_map_to_morse;
+		std::map<std::string,char> m_number_and_symbol_map_from_morse;
 
 	};
 }

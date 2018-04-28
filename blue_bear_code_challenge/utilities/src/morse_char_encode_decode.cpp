@@ -38,6 +38,8 @@ namespace Utilities
 	static const std::string DASH = "-";
 	static const std::string SPACE = " ";
 
+	//===========================================================================================
+
 	MorseCharEncodeDecode::MorseCharEncodeDecode()
 	{
 		// Populate arrays with strings of morse constants
@@ -73,6 +75,36 @@ namespace Utilities
 
 			}
 		}
+
+		// Numbers
+		static const Uint8_t NUMBER_OF_NUMERIC_DIGITS = 10U;
+		std::string morseNumberArray[NUMBER_OF_NUMERIC_DIGITS] = {
+				"- - - - -",
+				". - - - -",
+				". . - - -",
+				"- - - . .",
+				". . . . -",
+				". . . . .",
+				"- . . . .",
+				"- - . . .",
+				"- - - . .",
+				"- - - - ."};
+
+		char arrayOfNumericDigits[NUMBER_OF_NUMERIC_DIGITS] =
+		{'0','1','2','3','4','5','6','7','8','9'};
+
+		for (Uint8_t i = 0; i < NUMBER_OF_NUMERIC_DIGITS; i++)
+		{
+			//std::pair <const char,const std::string> toMorsePair(arrayOfNumericDigits[i], morseNumberArray[i]);
+			//std::pair <const std::string,const char> fromMorsePair(morseNumberArray[i],arrayOfNumericDigits[i]);
+			m_number_and_symbol_map_to_morse[arrayOfNumericDigits[i]] = morseNumberArray[i];
+			m_number_and_symbol_map_from_morse[morseNumberArray[i]] = arrayOfNumericDigits[i];
+		}
+
+		// Lets add some common symbols to the maps as well
+
+
+
 	}
 
 	//=============================================================================

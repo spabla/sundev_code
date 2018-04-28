@@ -312,6 +312,13 @@ namespace Utilities
 		}
 		else
 		{
+			// Create iterator for looking up in map
+			std::map<std::string,char>::iterator it;
+			it = m_number_and_symbol_map_from_morse.find(theMorseString);
+			if (it != m_number_and_symbol_map_from_morse.end())
+			{
+				theReturnTextVal = m_number_and_symbol_map_from_morse.find(theMorseString)->second;
+			}
 
 		}
 

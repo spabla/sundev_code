@@ -33,7 +33,8 @@ namespace Utilities
 
 		// Analyses the significant bits in a byte to determine the text character
 		// represented by the morse byte.  A 1 in the byte represents a dot in
-		// the character and a 0 represents a dash
+		// the character and a 0 represents a dash.  If the morse string is not
+		// identified then a null string is returned.
 		std::string getTextChar(Uint8_t theMorseCharByte,
 					            Uint8_t numberOfSignificantBitsInByte);
 

@@ -28,7 +28,7 @@ namespace Utilities
 		MorseCharEncodeDecode();
 
 		// A function which returns the morse string for the character
-		// passed in
+		// passed in.  If the character is not found a null string is returned
 		std::string getMorseString(char theCharacter);
 
 		// Analyses the significant bits in a byte to determine the text character

@@ -95,8 +95,6 @@ namespace Utilities
 
 		for (Uint8_t i = 0; i < NUMBER_OF_NUMERIC_DIGITS; i++)
 		{
-			//std::pair <const char,const std::string> toMorsePair(arrayOfNumericDigits[i], morseNumberArray[i]);
-			//std::pair <const std::string,const char> fromMorsePair(morseNumberArray[i],arrayOfNumericDigits[i]);
 			m_number_and_symbol_map_to_morse[arrayOfNumericDigits[i]] = morseNumberArray[i];
 			m_number_and_symbol_map_from_morse[morseNumberArray[i]] = arrayOfNumericDigits[i];
 		}
@@ -141,6 +139,12 @@ namespace Utilities
 				". . . -  . . -", // dollar sign
 				". - - . - ."// @ symbol
 		};
+
+		for (Uint8_t i = 0; i < NUMBER_OF_NUMERIC_DIGITS; i++)
+		{
+			m_number_and_symbol_map_to_morse[arrayOfCommonSymbols[i]] = arrayOfMorseStringsForCommonSymbols[i];
+			m_number_and_symbol_map_from_morse[arrayOfMorseStringsForCommonSymbols[i]] = arrayOfCommonSymbols[i];
+		}
 	}
 
 	//=============================================================================
@@ -209,6 +213,18 @@ namespace Utilities
 			}
 		}
 
+		// If we have not found the character then now check if it is a number or symbol
+		if (characterFound == false)
+		{
+			// Create iterator for looking up in map
+			std::map<char,std::string>::iterator it;
+			it = m_number_and_symbol_map_to_morse.find(theCharacter);
+			if (it != m_number_and_symbol_map_to_morse.end())
+			{
+				theMorseString = m_number_and_symbol_map_to_morse.find(theCharacter)->second;
+			}
+		}
+
 		return theMorseString;
 	}
 
@@ -219,6 +235,11 @@ namespace Utilities
 	{
 		// The return value
 		std::string theReturnTextVal;
+
+		// We will need to reconstruct the morse string
+		// so that if it is not representative of a letter then
+		// we can look it up in the map
+		std::string theMorseString;
 
 		// First remove the insignificant bits by shifting
 
@@ -247,12 +268,24 @@ namespace Utilities
 					// Bit set must be a dot
 					// Reduce the number of possible values by reducing max possible value
 					maxPossArrayPos = maxPossArrayPos - numberOfPossValues/2;
+					theMorseString = theMorseString + DOT;
+					// Don't put a space after last Dot
+					if (i < numberOfSignificantBitsInByte-1)
+					{
+						theMorseString = theMorseString + SPACE;
+					}
 				}
 				else
 				{
 					// must be a dash
 					// Reduce the number of possible values by increasing min possible value
 					minPossArrayPos = minPossArrayPos + numberOfPossValues/2;
+					theMorseString = theMorseString + DASH;
+					// Don't put a space after last Dash
+					if (i < numberOfSignificantBitsInByte-1)
+					{
+						theMorseString = theMorseString + SPACE;
+					}
 				}
 
 				// Shift the bit we have just checked out
@@ -276,6 +309,10 @@ namespace Utilities
 				theReturnTextVal = charRowFour[minPossArrayPos];
 				break;
 			}
+		}
+		else
+		{
+
 		}
 
 		return theReturnTextVal;

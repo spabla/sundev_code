@@ -96,8 +96,8 @@ PassFail_t Test1_ObjectCreation()
 	EncodeDecodeAlgorithms::TextToMorseAlgorithm theEncodeAlgorithm;
 	EncodeDecodeAlgorithms::MorseToTextAlgorithm theDecodeAlgorithm;
 
-	FileEncodeDecode theFileEncode(theEncodeAlgorithm,"anyString","anyString");
-	FileEncodeDecode theFileDecode(theDecodeAlgorithm,"anyString","anyString");
+	FileEncodeDecode theFileEncode(theEncodeAlgorithm,"./TestFiles/anyString","./TestFiles/anyString");
+	FileEncodeDecode theFileDecode(theDecodeAlgorithm,"./TestFiles/anyString","./TestFiles/anyString");
 
 	std::cout << "Note: Could not open input file being written to console is expected result for test being perfomred" << std::endl;
 
@@ -169,7 +169,7 @@ PassFail_t Test3_MorseStringCharacterDecode()
 	// generate must be equivalen to the independent morse file
 	return Test2_EncodeDecodeFile("./TestFiles/morse_character_string_decoded.txt",
 						          "./TestFiles/morse_character_string_decoded.morse",
-								  "./TestFiles/morse_character_string_decoded_reversed.texted");
+								  "./TestFiles/morse_character_string_decoded_reverse.txt");
 }
 
 void PerformDecodeOfMorseFile()

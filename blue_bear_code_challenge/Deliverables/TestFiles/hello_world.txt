@@ -1,0 +1,10 @@
+Hello World.
+
+This file can be converted to morse!
+
+Lets test the conversion with some numbers.
+0123456789
+
+If you like this software then you can let the author Sundev Pabla know by emailing:
+
+sundev.pabla@gmail.com

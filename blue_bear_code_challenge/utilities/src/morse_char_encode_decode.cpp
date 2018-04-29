@@ -101,7 +101,7 @@ namespace Utilities
 
 		// Lets add some common symbols (eg. punctuation marks, @ symbol - want to be
 		// able to handle email addresses) to the maps as well
-		static const Uint8_t NUMBER_OF_SUPPORTED_SYMBOLS = 15;
+		static const Uint8_t NUMBER_OF_SUPPORTED_SYMBOLS = 14;
 		char arrayOfCommonSymbols[NUMBER_OF_SUPPORTED_SYMBOLS] =
 		{
 				'.', // fullstop
@@ -117,7 +117,6 @@ namespace Utilities
 				'+', // plus
 				'-', // minus
 				'"', // quotation mark
-				'$', // dollar sign
 				'@'// @ symbol
 		};
 
@@ -136,7 +135,6 @@ namespace Utilities
 				". - . - .", // plus
 				"- . . . . -", // minus
 				". - . . - .", // quotation mark
-				". . . -  . . -", // dollar sign
 				". - - . - ."// @ symbol
 		};
 

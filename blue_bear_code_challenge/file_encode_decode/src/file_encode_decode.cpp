@@ -27,13 +27,15 @@ FileEncodeDecode::FileEncodeDecode(EncodeDecodeAlgorithms::EncodeDecodeAlgorithm
 	 {
 	    std::cout << "Cannot open input file.\n";
 	 }
-
-
-	 if(!m_output_file_stream)
+	 else
 	 {
-	    std::cout << "Cannot open output file.\n";
+		 // Only attempt to open / create output file if input file was
+		 // successfully opened.
+		 if(!m_output_file_stream)
+		 {
+		    std::cout << "Cannot open output file.\n";
+		 }
 	 }
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

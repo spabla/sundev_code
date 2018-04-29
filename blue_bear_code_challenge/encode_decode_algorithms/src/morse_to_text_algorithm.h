@@ -30,7 +30,8 @@ namespace EncodeDecodeAlgorithms
 
 		// Overridden function which must be implemented by
 		// this class in order to provide the algorithm for converting
-		// morse to text
+		// morse to text. At present the return is always true but
+		// interface allows for future extensions to return false upon error
 		bool encodeDecodeLine(std::string& theLine);
 	private:
 		// Utility class used for decoding characters from morse string to text

@@ -5,9 +5,8 @@ pipeline {
             steps {
                 sh 'echo "Building Utilities"'
                 sh '''
-                    cd ./blue_bear_code_challenge/utilities/Debug
-		    make clean
-		    make
+		    ./blue_bear_code_challenge/utilities/Debug/make clean
+		    ./blue_bear_code_challenge/utilities/Debug/make
                 '''
             }
         }

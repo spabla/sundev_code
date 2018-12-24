@@ -4,11 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Building Utilities"'
+                dir('blue_bear_code_challenge/utilities/Debug')
+                {
                 sh '''
-                    cd pwd()/blue_bear_code_challenge/utilities/Debug
+                    
 		    make clean
 		    make
                 '''
+	        }
             }
         }
     }

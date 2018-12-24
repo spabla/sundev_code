@@ -3,10 +3,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Hello World"'
+                sh 'echo "Building Utilities"'
                 sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
+                    cd ./blue_bear_code_challenge/utilities/Debug
+		    make clean
+		    make
                 '''
             }
         }

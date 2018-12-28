@@ -61,7 +61,7 @@ pipeline {
 		    make clean
 		    make
                     ./test_suite_morse_encode_decode.exe --gtest_output="xml:./testAll.xml"
-                    junit './testAll.xml'
+                    junit '**/target/*.xml'
 
                 '''
 	        }

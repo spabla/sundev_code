@@ -61,9 +61,9 @@ pipeline {
 		    make clean
 		    make
                     ./test_suite_morse_encode_decode.exe --gtest_output="xml:./testAll.xml"
-                    step([$class: 'XUnitBuilder',
+                    [$class: 'XUnitBuilder',
     			thresholds: [[$class: 'FailedThreshold', unstableThreshold: '1']],
-    			tools: [[$class: 'JUnitType', pattern: './testAll.xml']]])'
+    			tools: [[$class: 'JUnitType', pattern: './testAll.xml']]]
 
                 '''
 	        }

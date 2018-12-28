@@ -49,14 +49,23 @@ pipeline {
 		    make
                 '''
 	        }
+
+            }
+        }
+      stage('Test') {
+            steps {
                 dir('blue_bear_code_challenge/applications/test_suite_morse_encode_decode/Debug')
                 {
                 sh '''
                     
 		    make clean
 		    make
+                    ./test_suite_morse_encode_decode.exe --gtest_output="xml:./testAll.xml"
+                    junit './testAll.xml'
+
                 '''
 	        }
+                 
             }
         }
     }

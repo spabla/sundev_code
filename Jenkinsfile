@@ -61,6 +61,9 @@ pipeline {
 		    make clean
 		    make
                     ./test_suite_morse_encode_decode.exe --gtest_output="xml:./testAll.xml"
+                    xunit (
+                	thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
+                	tools: [ BoostTest(pattern: './testAll.xml') ])
             
                 '''
 	        }
@@ -68,14 +71,4 @@ pipeline {
             }
         }
     }
-    post {
-        always{
-		dir('blue_bear_code_challenge/applications/test_suite_morse_encode_decode/Debug')
-                {
-            		xunit (
-                	thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
-                	tools: [ BoostTest(pattern: './testAll.xml') ])
-		}
-            )
-        }
 }

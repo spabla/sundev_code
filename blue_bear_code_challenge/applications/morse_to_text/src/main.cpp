@@ -8,12 +8,14 @@
 //////////////////////////////////////////////////////////////////////
 
 #include <iostream>
+#include <gtest/gtest.h>
 #include "file_encode_decode.h"
 #include "morse_to_text_algorithm.h"
 #include "basic_types.h"
 
 int main(int argc,char *argv[])
 {
+
 	// The number of commandline arguments expected
 	// 1st is path to application which is automatically passed in
 	// 2nd is path to the input file

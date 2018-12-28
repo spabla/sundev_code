@@ -18,6 +18,8 @@
 #include "morse_to_text_algorithm.h"
 #include "file_encode_decode.h"
 
+#include <gtest/gtest.h>
+
 
 enum PassFail_t
 {
@@ -57,37 +59,25 @@ static const std::string outFileArray[NUMBER_OF_INPUT_FILES] =
 	"./TestFiles/testFileHelloWorldReverse.txt",
 	"./TestFiles/testFileNumbersReverse.txt",
 	"./TestFiles/testFileSymbolsReverse.txt"
+
 									 };
 
-int main()
+TEST(Test1, Creation)
 {
-	int testPassCount = 0;
-	int testFailCount = 0;
+	ASSERT_EQ(Test1_ObjectCreation(),PASS);
+}
 
-	// Run tests
+TEST(Test2, EncodeDecodeFile)
+{
+	ASSERT_EQ(Test2_EncodeDecodeFile(inFileArray[0],
+									morseFileArray[0],
+									outFileArray[0]),PASS);
+}
+int main(int argc,char *argv[])
+{
+	::testing::InitGoogleTest(&argc, argv);
 
-	// Test Case 1
-	Test1_ObjectCreation() == PASS ? testPassCount++:testFailCount++;
-
-	// Test Case 2 (Consists of multiple test)
-	for (Uint8_t i = 0; i < NUMBER_OF_INPUT_FILES; i++)
-	{
-		Test2_EncodeDecodeFile(inFileArray[i],
-				               morseFileArray[i],
-							   outFileArray[i]) == PASS ? testPassCount++:testFailCount++;
-	}
-
-	// Test Case 3
-	Test3_MorseStringCharacterDecode() == PASS ? testPassCount++:testFailCount++;
-
-	std::cout <<"Tests Passed: " << testPassCount << std::endl;
-	std::cout <<"Tests Failed: " << testFailCount << std::endl;
-
-	std::cout <<"Press any key to exit" << std::endl;
-
-	std::cin.get();
-
-	return 0;
+	return RUN_ALL_TESTS();
 }
 
 PassFail_t Test1_ObjectCreation()

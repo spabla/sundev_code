@@ -43,14 +43,14 @@ all: test_suite_morse_encode_decode.exe
 # Tool invocations
 test_suite_morse_encode_decode.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: Cygwin C++ Linker'
-	g++ -L"/home/sundev/sundev_code/blue_bear_code_challenge/file_encode_decode/Debug" -L"/home/sundev/sundev_code/blue_bear_code_challenge/utilities/Debug" -L"/home/sundev/sundev_code/blue_bear_code_challenge/encode_decode_algorithms/Debug" -o "test_suite_morse_encode_decode.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: GCC C++ Linker'
+	g++ -L"/home/sundev/sundev_code/blue_bear_code_challenge/file_encode_decode/Debug" -L"/home/sundev/sundev_code/blue_bear_code_challenge/utilities/Debug" -L"/home/sundev/sundev_code/blue_bear_code_challenge/encode_decode_algorithms/Debug" -L/usr/lib -o "test_suite_morse_encode_decode.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(CPP_DEPS)$(C_DEPS) test_suite_morse_encode_decode.exe
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) test_suite_morse_encode_decode.exe
 	-@echo ' '
 
 .PHONY: all clean dependents

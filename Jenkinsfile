@@ -65,7 +65,7 @@ pipeline {
                     
             
                 '''
-                junit '**/target/*.xml'
+                junit '**/testAll.xml'
 	        }
                  
             }

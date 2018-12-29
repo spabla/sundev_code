@@ -62,6 +62,46 @@ static const std::string outFileArray[NUMBER_OF_INPUT_FILES] =
 
 									 };
 
+
+	class Test1 : public ::testing::Test
+	{
+
+	 protected:
+
+	  virtual void SetUp()
+	  {
+
+	  }
+
+
+	  virtual void TearDown()
+	  {
+
+	    // Code here will be called immediately after each test
+
+	    // (right before the destructor).
+
+	  }
+
+	};
+
+class Test2 : public ::testing::Test
+{
+ protected:
+
+  virtual void SetUp()
+  {
+  }
+
+
+  virtual void TearDown()
+  {
+    // Code here will be called immediately after each test
+    // (right before the destructor).
+
+  }
+};
+
 TEST(Test1, Creation)
 {
 	ASSERT_EQ(Test1_ObjectCreation(),PASS);
